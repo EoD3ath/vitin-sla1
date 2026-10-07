@@ -1,0 +1,2702 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title> aba teste</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <aside>
+
+        <div class="brand">
+            <svg viewBox="0 0 40 40">
+                <rect width="40" height="40" rx="11"
+                      fill="#151515"
+                      stroke="#E50914"
+                      stroke-width="1.5"/>
+
+                <path d="M6 22h7l4-10 5 18 4-12 2 4h6"
+                      fill="none"
+                      stroke="#FF3038"
+                      stroke-width="2.6"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"/>
+            </svg>
+
+            <div>
+                ExitInputlag
+                <small>Mouse Lab</small>
+            </div>
+        </div>
+
+        <div id="nav"></div>
+
+    </aside>
+
+
+    <main>
+
+        <!-- VISÃO GERAL -->
+        <section class="pg on" id="p-ov">
+
+            <h1>Visão geral</h1>
+
+            <p class="sub">
+                Rode os testes e veja o resumo do seu mouse aqui.
+                Os resultados ficam salvos neste navegador.
+            </p>
+
+            <div class="st" id="ovc"></div>
+
+            <div class="card">
+                <h2>Diagnóstico</h2>
+
+                <div id="diag" class="lab">
+                    Faça os testes para ver o diagnóstico.
+                </div>
+            </div>
+
+            <div class="card">
+
+                <h2>Por onde começar</h2>
+
+                <div class="lab">
+
+                    1. <b>Taxa de resposta</b> e <b>Medir DPI</b>
+                    mostram o que o mouse entrega.
+                    <br>
+
+                    2. <b>Botões e roda</b> e
+                    <b>Cliques por segundo</b> checam o hardware do mouse (parte fisica).
+                    <br>
+
+                    3. <b>Treino de mira</b> mede sua precisão.
+                    <br>
+
+                    4. Em <b>Sensibilidade</b>, calcule e converta
+                    entre jogos, e salve em <b>Perfis</b>.
+                    <br>
+
+                    5. Siga o <b>Guia do Windows</b> para deixar
+                    o movimento 1:1.
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TAXA DE RESPOSTA -->
+        <section class="pg" id="p-poll">
+
+            <h1>Taxa de resposta</h1>
+
+            <p class="sub">
+                Mova o mouse em círculos rápidos dentro da área.
+                Mouses comuns trabalham a 125, 500 ou 1000 Hz.
+            </p>
+
+            <div class="card">
+
+                <div class="big">
+                    <span id="hz">0</span>
+                    <small>Hz</small>
+                </div>
+
+                <div class="lab">
+                    Máximo medido:
+                    <b id="hzm" style="color:#fff">0</b> Hz ·
+                    Classe estimada:
+                    <b id="hzc" style="color:#fff">-</b>
+                </div>
+
+                <div class="pad" id="pp">
+                    Mova o mouse aqui
+                </div>
+
+            </div>
+
+            <div class="note">
+                A medição é uma estimativa feita pelo navegador.
+                Quanto maior a taxa, menor o atraso do cursor.
+            </div>
+
+        </section>
+
+
+        <!-- DPI -->
+        <section class="pg" id="p-dpi">
+
+            <h1>Medir DPI</h1>
+
+            <p class="sub">
+                Coloque uma régua ao lado do mouse, clique em iniciar
+                e mova o mouse na horizontal pela distância escolhida.
+                Esc encerra.
+            </p>
+
+            <div class="card">
+
+                <div class="f">
+
+                    <label>
+                        Distância (cm)
+
+                        <input
+                            id="cm"
+                            type="number"
+                            value="10"
+                            min="1"
+                            step="0.5"
+                        >
+
+                    </label>
+
+                </div>
+
+                <button class="cta" id="dstart">
+                    Iniciar medição
+                </button>
+
+                <div class="st">
+
+                    <div class="s">
+                        <span class="lab">Movimento contado</span>
+                        <b id="cnt">0</b>
+                    </div>
+
+                    <div class="s">
+                        <span class="lab">DPI estimado</span>
+                        <b id="dpi">-</b>
+                        <i id="dnear"></i>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="note" id="dnote">
+                Repita 2 ou 3 vezes com a mesma distância.
+                DPIs comuns: 400, 800, 1200, 1600, 3200.
+            </div>
+
+        </section>
+
+
+        <!-- BOTÕES -->
+        <section class="pg" id="p-btn">
+
+            <h1>Botões e roda</h1>
+
+            <p class="sub">
+                Clique com cada botão e gire a roda.
+                Ajuda a achar botões com defeito ou clique duplo indesejado.
+            </p>
+
+            <div class="card">
+
+                <div class="pad" id="bp" style="height:120px">
+                    Clique e gire a roda aqui
+                </div>
+
+                <div class="btns">
+
+                    <div class="b" id="b0">Esquerdo</div>
+                    <div class="b" id="b1">Meio</div>
+                    <div class="b" id="b2">Direito</div>
+                    <div class="b" id="b3">Lateral 1</div>
+                    <div class="b" id="b4">Lateral 2</div>
+
+                </div>
+
+                <div class="st">
+
+                    <div class="s">
+                        <span class="lab">Roda</span>
+                        <b id="wh">-</b>
+                    </div>
+
+                    <div class="s">
+                        <span class="lab">Total de giros</span>
+                        <b id="wc">0</b>
+                    </div>
+
+                    <div class="s">
+                        <span class="lab">Último intervalo</span>
+                        <b id="gap">-</b>
+                    </div>
+
+                    <div class="s">
+                        <span class="lab">
+                            Cliques duplos suspeitos
+                        </span>
+                        <b id="dbl">0</b>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="note">
+                Um clique com intervalo abaixo de 60 ms depois
+                de outro costuma indicar microswitch gasto.
+            </div>
+
+        </section>
+
+
+        <!-- CPS -->
+        <section class="pg" id="p-cps">
+
+            <h1>Cliques por segundo</h1>
+
+            <p class="sub">
+                Clique o mais rápido que conseguir durante 5 segundos.
+            </p>
+
+            <div class="card">
+
+                <div class="big">
+                    <span id="cps">0.0</span>
+                    <small>CPS</small>
+                </div>
+
+                <div class="lab">
+                    Tempo:
+                    <b id="tl" style="color:#fff">5.0</b> s ·
+
+                    Cliques:
+                    <b id="cc" style="color:#fff">0</b> ·
+
+                    Melhor:
+                    <b id="cb" style="color:#fff">0</b>
+                </div>
+
+                <div class="pad" id="cp" style="cursor:pointer">
+                    Clique aqui para começar
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TREINO DE MIRA -->
+        <section class="pg" id="p-aim">
+
+            <h1>Treino de mira</h1>
+
+            <p class="sub">
+                Acerte 15 alvos o mais rápido possível.
+                Erros contam contra a sua precisão.
+            </p>
+
+            <div class="card">
+
+                <div class="st">
+
+                    <div class="s">
+                        <span class="lab">Alvos restantes</span>
+                        <b id="al">15</b>
+                    </div>
+
+                    <div class="s">
+                        <span class="lab">Precisão</span>
+                        <b id="ap">-</b>
+                    </div>
+
+                    <div class="s">
+                        <span class="lab">Tempo médio</span>
+                        <b id="at">-</b>
+                    </div>
+
+                </div>
+
+                <div
+                    class="pad"
+                    id="ap2"
+                    style="height:320px;cursor:crosshair"
+                >
+                    Clique em iniciar
+                </div>
+
+                <button class="cta" id="astart">
+                    Iniciar treino
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- CALCULADORA -->
+        <section class="pg" id="p-calc">
+
+            <h1>Calculadora</h1>
+
+            <p class="sub">
+                Descubra quanto o mouse precisa andar para girar
+                360° no jogo.
+            </p>
+
+            <div class="card">
+
+                <div class="f">
+
+                    <label>
+                        Jogo
+                        <select id="g"></select>
+                    </label>
+
+                    <label>
+                        DPI
+                        <input id="d" type="number" value="800">
+                    </label>
+
+                    <label>
+                        Sensibilidade
+                        <input
+                            id="s"
+                            type="number"
+                            value="1.2"
+                            step="0.01"
+                        >
+                    </label>
+
+                </div>
+
+                <div class="st">
+
+                    <div class="s">
+                        <span class="lab">eDPI</span>
+                        <b id="e">0</b>
+                    </div>
+
+                    <div class="s">
+                        <span class="lab">Giro de 360°</span>
+                        <b>
+                            <span id="c">0</span> cm
+                        </b>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONVERSOR -->
+        <section class="pg" id="p-conv">
+
+            <h1>Conversor entre jogos</h1>
+
+            <p class="sub">
+                Troque de jogo mantendo a mesma distância
+                para girar 360°.
+            </p>
+
+            <div class="card">
+
+                <div class="f">
+
+                    <label>
+                        De
+                        <select id="cf"></select>
+                    </label>
+
+                    <label>
+                        Sensibilidade
+                        <input
+                            id="cs"
+                            type="number"
+                            value="1.2"
+                            step="0.01"
+                        >
+                    </label>
+
+                    <label>
+                        Para
+                        <select id="ct"></select>
+                    </label>
+
+                </div>
+
+                <div class="st">
+
+                    <div class="s">
+                        <span class="lab">
+                            Sensibilidade no jogo novo
+                        </span>
+
+                        <b id="cr">0</b>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PERFIS -->
+        <section class="pg" id="p-prof">
+
+            <h1>Perfis</h1>
+
+            <p class="sub">
+                Salve combinações de jogo, DPI e sensibilidade
+                da calculadora.
+            </p>
+
+            <div class="card">
+
+                <div class="f">
+
+                    <label>
+                        Nome do perfil
+                        <input
+                            id="pn"
+                            placeholder="Ex.: Valorant ranked"
+                        >
+                    </label>
+
+                </div>
+
+                <button
+                    class="cta"
+                    id="psave"
+                    style="margin-top:0"
+                >
+                    Salvar perfil atual
+                </button>
+
+                <div id="pl"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- OTIMIZAÇÃO -->
+        <section class="pg" id="p-opt">
+
+            <h1>Otimizar mouse</h1>
+
+            <p class="sub">
+                Escolha os ajustes e baixe o arquivo de otimização.
+                Ao abrir o arquivo, o Windows aplica as configurações
+                ao seu usuário.
+            </p>
+
+            <div class="card">
+
+                <h2>Ajustes</h2>
+
+                <label class="row">
+                    <input type="checkbox" id="o1" checked>
+
+                    <span class="g">
+                        Desativar aceleração do ponteiro
+
+                        <small>
+                            Movimento 1:1, igual em qualquer velocidade.
+                        </small>
+                    </span>
+                </label>
+
+
+                <label class="row">
+
+                    <input type="checkbox" id="o2" checked>
+
+                    <span class="g">
+                        Velocidade do cursor (1 a 20)
+
+                        <small>
+                            10 é o valor neutro.
+                        </small>
+                    </span>
+
+                    <input
+                        type="number"
+                        id="v2"
+                        value="10"
+                        min="1"
+                        max="20"
+                    >
+
+                </label>
+
+
+                <label class="row">
+
+                    <input type="checkbox" id="o3">
+
+                    <span class="g">
+                        Tempo do duplo clique (ms)
+
+                        <small>
+                            Menor exige cliques mais rápidos.
+                        </small>
+                    </span>
+
+                    <input
+                        type="number"
+                        id="v3"
+                        value="500"
+                        min="200"
+                        max="900"
+                    >
+
+                </label>
+
+
+                <label class="row">
+
+                    <input type="checkbox" id="o4">
+
+                    <span class="g">
+                        Linhas por giro da roda
+
+                        <small>
+                            Quanto a página rola a cada clique da roda.
+                        </small>
+                    </span>
+
+                    <input
+                        type="number"
+                        id="v4"
+                        value="3"
+                        min="1"
+                        max="10"
+                    >
+
+                </label>
+
+
+                <div class="btns">
+
+                    <button
+                        class="cta"
+                        id="oget"
+                        style="margin-top:0"
+                    >
+                        Baixar otimização (.reg)
+                    </button>
+
+                    <button
+                        class="mini"
+                        id="orest"
+                    >
+                        Baixar restauração (.reg)
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2>Conteúdo do arquivo</h2>
+
+                <div class="lab">
+                    Você pode conferir exatamente o que será alterado.
+                </div>
+
+                <textarea id="oreg" readonly></textarea>
+
+            </div>
+
+
+            <div class="note">
+
+                <b>Como aplicar:</b>
+
+                dê dois cliques no arquivo baixado,
+                confirme, depois saia e entre de novo no Windows
+                (ou reinicie).
+
+                O arquivo de restauração volta ao padrão do Windows.
+
+            </div>
+
+        </section>
+
+
+        <!-- MACROS -->
+        <section class="pg" id="p-mac">
+
+            <h1>Macros</h1>
+
+            <p class="sub">
+                Monte uma sequência de cliques, teclas e esperas,
+                ou grave com o mouse. Depois baixe um script do
+                AutoHotkey v2.
+            </p>
+
+            <div class="card">
+
+                <h2>Configuração</h2>
+
+                <div class="f">
+
+                    <label>
+                        Nome
+                        <input
+                            id="mn"
+                            type="text"
+                            value="Minha macro"
+                        >
+                    </label>
+
+                    <label>
+                        Atalho
+
+                        <select id="mk">
+                            <option>F6</option>
+                            <option>F7</option>
+                            <option selected>F8</option>
+                            <option>F9</option>
+                            <option>F10</option>
+                            <option>F11</option>
+                            <option>F12</option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Modo
+
+                        <select id="mm" style="width:190px">
+                            <option value="t">
+                                Liga/desliga (loop)
+                            </option>
+
+                            <option value="n">
+                                Repetir N vezes
+                            </option>
+                        </select>
+                    </label>
+
+                    <label>
+                        Repetições
+
+                        <input
+                            id="mr"
+                            type="number"
+                            value="10"
+                            min="1"
+                        >
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2>Passos</h2>
+
+                <div class="f">
+
+                    <label>
+                        Tecla
+
+                        <input
+                            id="mkey"
+                            type="text"
+                            value="e"
+                            style="width:90px"
+                        >
+                    </label>
+
+                    <label>
+                        Esperar (ms)
+
+                        <input
+                            id="mw"
+                            type="number"
+                            value="50"
+                            min="1"
+                            style="width:110px"
+                        >
+                    </label>
+
+                </div>
+
+
+                <div class="btns" style="margin-top:0">
+
+                    <button class="mini" data-a="Left">
+                        + Clique esquerdo
+                    </button>
+
+                    <button class="mini" data-a="Right">
+                        + Clique direito
+                    </button>
+
+                    <button class="mini" data-a="Middle">
+                        + Clique do meio
+                    </button>
+
+                    <button class="mini" data-a="key">
+                        + Tecla
+                    </button>
+
+                    <button class="mini" data-a="wait">
+                        + Esperar
+                    </button>
+
+                </div>
+
+
+                <div id="ms" style="margin-top:12px"></div>
+
+
+                <div class="btns">
+
+                    <button class="mini" id="mrec">
+                        Gravar
+                    </button>
+
+                    <button class="mini" id="mtest">
+                        Testar
+                    </button>
+
+                    <button class="mini" id="mclr">
+                        Limpar
+                    </button>
+
+                    <button class="mini" id="mp1">
+                        Modelo: auto clicker
+                    </button>
+
+                    <button class="mini" id="mp2">
+                        Modelo: repetir tecla
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="pad"
+                    id="rp"
+                    tabindex="0"
+                    style="height:90px;cursor:crosshair"
+                >
+                    Clique em Gravar e use o mouse e o teclado aqui
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2>Script gerado</h2>
+
+                <textarea id="mc" readonly></textarea>
+
+                <div class="btns">
+
+                    <button
+                        class="cta"
+                        id="mdl"
+                        style="margin-top:0"
+                    >
+                        Baixar macro (.ahk)
+                    </button>
+
+                    <button class="mini" id="mcp">
+                        Copiar
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="note">
+
+                <b>Como usar:</b>
+
+                1) Instale o AutoHotkey v2.
+                2) Dê dois cliques no arquivo .ahk.
+                3) Aperte o atalho para ligar a macro.
+
+                Ctrl+Esc encerra o script.
+
+                Use macros apenas onde forem permitidas:
+                muitos jogos online proíbem e podem banir.
+
+            </div>
+
+        </section>
+
+
+        <!-- GUIA WINDOWS -->
+        <section class="pg" id="p-win">
+
+            <h1>Guia do Windows</h1>
+
+            <p class="sub">
+                O navegador não altera o sistema.
+                Siga os passos e marque o que já fez.
+            </p>
+
+            <div class="card">
+
+                <div class="lab">
+                    Progresso:
+                    <b id="wp" style="color:#fff">0/6</b>
+                </div>
+
+                <div class="bar">
+                    <i id="wb"></i>
+                </div>
+
+                <div id="wl"></div>
+
+            </div>
+
+            <div class="note">
+                Quer aplicar velocidade e aceleração automaticamente?
+                Use o programa <b>redpulse_mouse.pyw</b>.
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+<script>
+    const $ = s => document.querySelector(s);
+
+let D = {
+    res: {},
+    prof: [],
+    chk: []
+};
+
+try {
+    D = Object.assign(
+        D,
+        JSON.parse(localStorage.getItem('rpm') || '{}')
+    );
+} catch (e) {}
+
+const save = () => {
+    try {
+        localStorage.setItem(
+            'rpm',
+            JSON.stringify(D)
+        );
+    } catch (e) {}
+};
+
+
+// ==============================
+// NAVEGAÇÃO
+// ==============================
+
+const NAV = [
+    [
+        'Início',
+        [
+            ['ov', 'Visão geral']
+        ]
+    ],
+
+    [
+        'Testes',
+        [
+            ['poll', 'Taxa de resposta'],
+            ['dpi', 'Medir DPI'],
+            ['btn', 'Botões e roda'],
+            ['cps', 'Cliques por segundo'],
+            ['aim', 'Treino de mira']
+        ]
+    ],
+
+    [
+        'Sensibilidade',
+        [
+            ['calc', 'Calculadora'],
+            ['conv', 'Conversor entre jogos'],
+            ['prof', 'Perfis']
+        ]
+    ],
+
+    [
+        'Otimização',
+        [
+            ['opt', 'Otimizar mouse'],
+            ['mac', 'Macros']
+        ]
+    ],
+
+    [
+        'Sistema',
+        [
+            ['win', 'Guia do Windows']
+        ]
+    ]
+];
+
+
+$('#nav').innerHTML =
+    NAV.map(([g, a]) =>
+
+        `<div class="grp">${g}</div>` +
+
+        a.map(([k, n]) =>
+            `<button class="nb ${k == 'ov' ? 'on' : ''}" data-k="${k}">
+                ${n}
+            </button>`
+        ).join('')
+
+    ).join('');
+
+
+$('#nav').onclick = e => {
+
+    const b = e.target.closest('.nb');
+
+    if (!b) return;
+
+    document
+        .querySelectorAll('.nb')
+        .forEach(x =>
+            x.classList.toggle('on', x == b)
+        );
+
+    document
+        .querySelectorAll('.pg')
+        .forEach(p =>
+            p.classList.toggle(
+                'on',
+                p.id == 'p-' + b.dataset.k
+            )
+        );
+
+    if (b.dataset.k == 'ov') {
+        ov();
+    }
+
+    scrollTo(0, 0);
+};
+
+
+const R = (k, v) => {
+    D.res[k] = v;
+    save();
+};
+
+
+// ==============================
+// VISÃO GERAL
+// ==============================
+
+function ov() {
+
+    const r = D.res;
+
+    const c = [
+
+        [
+            'Taxa de resposta',
+            r.hz ? r.hz + ' Hz' : '-',
+            'Máximo medido'
+        ],
+
+        [
+            'DPI medido',
+            r.dpi ? r.dpi : '-',
+            'Última medição'
+        ],
+
+        [
+            'Melhor CPS',
+            r.cps ? r.cps : '-',
+            'Cliques por segundo'
+        ],
+
+        [
+            'Precisão de mira',
+            r.aim ? r.aim + '%' : '-',
+            r.aimt ? r.aimt + ' ms por alvo' : 'Treino de mira'
+        ],
+
+        [
+            'Cliques duplos',
+            r.dbl != null ? r.dbl : '-',
+            'Suspeitos no teste'
+        ]
+
+    ];
+
+    $('#ovc').innerHTML =
+        c.map(([a, b, d]) =>
+
+            `<div class="s">
+                <span class="lab">${a}</span>
+                <b>${b}</b>
+                <i>${d}</i>
+            </div>`
+
+        ).join('');
+
+
+    const t = [];
+
+
+    if (r.hz) {
+
+        t.push(
+            r.hz >= 800
+                ? 'Taxa de resposta alta (classe 1000 Hz).'
+                : r.hz >= 400
+                    ? 'Taxa de resposta boa (classe 500 Hz).'
+                    : 'Taxa de resposta baixa (classe 125 Hz). Teste movendo mais rápido ou verifique a porta USB.'
+        );
+
+    }
+
+
+    if (r.dpi) {
+
+        t.push(
+            r.dpi > 3200
+                ? 'DPI muito alto. Em jogos competitivos, 400 a 1600 costuma dar mais controle.'
+                : 'DPI em faixa comum para jogos.'
+        );
+
+    }
+
+
+    if (r.dbl > 0) {
+
+        t.push(
+            'Foram detectados cliques duplos suspeitos. O microswitch pode estar com defeito.'
+        );
+
+    }
+
+
+    if (r.aim) {
+
+        t.push(
+            r.aim >= 90
+                ? 'Ótima precisão no treino de mira.'
+                : 'Treine a mira com sensibilidade um pouco menor para ganhar precisão.'
+        );
+
+    }
+
+
+    $('#diag').innerHTML =
+        t.length
+            ? t.map(x => '• ' + x).join('<br>')
+            : 'Faça os testes para ver o diagnóstico.';
+}
+
+ov();
+
+
+// ==============================
+// TAXA DE RESPOSTA
+// ==============================
+
+let ts = [];
+let mx = 0;
+
+const pp = $('#pp');
+
+
+pp.addEventListener('pointermove', e => {
+
+    const ev =
+        e.getCoalescedEvents
+            ? e.getCoalescedEvents()
+            : [e];
+
+    const n = performance.now();
+
+
+    ev.forEach(x =>
+        ts.push(x.timeStamp || n)
+    );
+
+
+    ts = ts.filter(
+        t => n - t < 1000
+    );
+
+
+    const h = ts.length;
+
+    $('#hz').textContent = h;
+
+
+    if (h > mx) {
+
+        mx = h;
+
+        $('#hzm').textContent = h;
+
+        $('#hzc').textContent =
+            h >= 800
+                ? '1000 Hz'
+                : h >= 400
+                    ? '500 Hz'
+                    : '125 Hz';
+
+        R('hz', h);
+
+    }
+
+
+    pp.classList.add('hot');
+
+});
+
+
+pp.addEventListener('pointerleave', () => {
+
+    ts = [];
+
+    $('#hz').textContent = 0;
+
+    pp.classList.remove('hot');
+
+});
+
+
+// ==============================
+// DPI
+// ==============================
+
+let cnt = 0;
+let lk = false;
+
+
+const upd = () => {
+
+    $('#cnt').textContent =
+        Math.round(cnt);
+
+    const cm = +$('#cm').value;
+
+
+    if (cnt > 50 && cm > 0) {
+
+        const d =
+            Math.round(
+                cnt / (cm / 2.54)
+            );
+
+        $('#dpi').textContent = d;
+
+
+        const n = [
+            400,
+            800,
+            1200,
+            1600,
+            2400,
+            3200,
+            6400
+        ].reduce(
+            (a, b) =>
+                Math.abs(b - d) <
+                Math.abs(a - d)
+                    ? b
+                    : a
+        );
+
+
+        $('#dnear').textContent =
+            'Valor comum mais próximo: ' + n;
+
+        R('dpi', d);
+
+    }
+
+};
+
+
+$('#dstart').onclick = async () => {
+
+    cnt = 0;
+
+    upd();
+
+    try {
+
+        await document.body.requestPointerLock({
+            unadjustedMovement: true
+        });
+
+    } catch (e) {
+
+        try {
+
+            document.body.requestPointerLock();
+
+            $('#dnote').textContent =
+                'Movimento bruto indisponível. O resultado pode variar com a velocidade do Windows.';
+
+        } catch (_) {
+
+            $('#dnote').textContent =
+                'Medição indisponível neste navegador.';
+
+        }
+
+    }
+
+};
+
+
+document.addEventListener(
+    'pointerlockchange',
+    () => {
+
+        lk =
+            document.pointerLockElement ===
+            document.body;
+
+        $('#dstart').textContent =
+            lk
+                ? 'Medindo... (Esc para parar)'
+                : 'Iniciar medição';
+
+    }
+);
+
+
+document.addEventListener(
+    'mousemove',
+    e => {
+
+        if (lk) {
+
+            cnt +=
+                Math.abs(e.movementX) *
+                (devicePixelRatio || 1);
+
+            upd();
+
+        }
+
+    }
+);
+
+
+$('#cm').oninput = upd;
+
+
+// ==============================
+// BOTÕES
+// ==============================
+
+let lc = 0;
+let db = 0;
+let wc = 0;
+
+const bp = $('#bp');
+
+
+bp.oncontextmenu = e =>
+    e.preventDefault();
+
+
+bp.onmousedown = e => {
+
+    e.preventDefault();
+
+    const b = $('#b' + e.button);
+
+    if (b)
+        b.classList.add('hit');
+
+
+    const n = performance.now();
+
+
+    if (lc) {
+
+        const g = n - lc;
+
+        $('#gap').textContent =
+            Math.round(g) + ' ms';
+
+
+        if (g < 60) {
+
+            $('#dbl').textContent = ++db;
+
+            R('dbl', db);
+
+        }
+
+    }
+
+
+    lc = n;
+
+
+    if (D.res.dbl == null)
+        R('dbl', 0);
+
+};
+
+
+addEventListener(
+    'mouseup',
+    e => {
+
+        const b = $('#b' + e.button);
+
+        if (b)
+            b.classList.remove('hit');
+
+    }
+);
+
+
+bp.addEventListener(
+    'wheel',
+    e => {
+
+        e.preventDefault();
+
+        $('#wh').textContent =
+            e.deltaY < 0
+                ? 'Para cima'
+                : 'Para baixo';
+
+        $('#wc').textContent =
+            ++wc;
+
+    },
+    {
+        passive: false
+    }
+);
+
+
+// ==============================
+// CPS
+// ==============================
+
+let run = 0;
+let cl = 0;
+let t0 = 0;
+let tm;
+
+let best =
+    D.res.cps || 0;
+
+
+const cp = $('#cp');
+
+$('#cb').textContent = best;
+
+
+cp.onmousedown = e => {
+
+    e.preventDefault();
+
+
+    if (!run) {
+
+        run = 1;
+
+        cl = 0;
+
+        t0 = performance.now();
+
+        cp.classList.add('hot');
+
+        cp.textContent = 'Clique!';
+
+        tm = setInterval(
+            tick,
+            50
+        );
+
+    }
+
+
+    cl++;
+
+    $('#cc').textContent = cl;
+
+};
+
+
+function tick() {
+
+    const el =
+        (performance.now() - t0) / 1000;
+
+    const left =
+        Math.max(0, 5 - el);
+
+
+    $('#tl').textContent =
+        left.toFixed(1);
+
+
+    $('#cps').textContent =
+        (
+            cl /
+            Math.max(el, .2)
+        ).toFixed(1);
+
+
+    if (left <= 0) {
+
+        clearInterval(tm);
+
+        run = 0;
+
+        cp.classList.remove('hot');
+
+        cp.textContent =
+            'Fim. Clique para tentar de novo';
+
+
+        const v =
+            +(cl / 5).toFixed(1);
+
+
+        $('#cps').textContent = v;
+
+
+        if (v > best) {
+
+            best = v;
+
+            $('#cb').textContent = v;
+
+            R('cps', v);
+
+        }
+
+    }
+
+}
+
+
+// ==============================
+// MIRA
+// ==============================
+
+const ap = $('#ap2');
+
+let ar = 0;
+let left = 0;
+let hits = 0;
+let miss = 0;
+let tt = [];
+let ts0 = 0;
+
+
+function spawn() {
+
+    ap.innerHTML = '';
+
+
+    if (left <= 0)
+        return endAim();
+
+
+    const t =
+        document.createElement('div');
+
+
+    t.className = 'tg';
+
+
+    t.style.left =
+        Math.random() *
+        (ap.clientWidth - 46) +
+        'px';
+
+
+    t.style.top =
+        Math.random() *
+        (ap.clientHeight - 46) +
+        'px';
+
+
+    t.dataset.t = 1;
+
+    ap.appendChild(t);
+
+    ts0 = performance.now();
+
+}
+
+
+function endAim() {
+
+    ar = 0;
+
+
+    const a =
+        Math.round(
+            hits /
+            (hits + miss) *
+            100
+        );
+
+
+    const m =
+        Math.round(
+            tt.reduce(
+                (x, y) => x + y,
+                0
+            ) / tt.length
+        );
+
+
+    ap.textContent =
+        'Treino finalizado: ' +
+        a +
+        '% de precisão, ' +
+        m +
+        ' ms por alvo';
+
+
+    $('#ap').textContent =
+        a + '%';
+
+
+    $('#at').textContent =
+        m + ' ms';
+
+
+    R('aim', a);
+
+    R('aimt', m);
+
+}
+
+
+ap.onmousedown = e => {
+
+    if (!ar)
+        return;
+
+
+    e.preventDefault();
+
+
+    if (e.target.dataset.t) {
+
+        hits++;
+
+        tt.push(
+            performance.now() - ts0
+        );
+
+        left--;
+
+        $('#al').textContent = left;
+
+        spawn();
+
+    } else {
+
+        miss++;
+
+        $('#ap').textContent =
+            Math.round(
+                hits /
+                (hits + miss) *
+                100
+            ) + '%';
+
+    }
+
+};
+
+
+$('#astart').onclick = () => {
+
+    ar = 1;
+
+    left = 15;
+
+    hits = 0;
+
+    miss = 0;
+
+    tt = [];
+
+    $('#al').textContent = 15;
+
+    $('#ap').textContent = '-';
+
+    $('#at').textContent = '-';
+
+    spawn();
+
+};
+
+
+// ==============================
+// CALCULADORA
+// ==============================
+
+const G = {
+
+    'Counter-Strike 2': .022,
+    'Valorant': .07,
+    'Apex Legends': .022,
+    'Overwatch 2': .0066,
+    'Fortnite': .005555,
+    'Rainbow Six Siege': .00573
+
+};
+
+
+const opts =
+    Object.keys(G)
+        .map(n => `<option>${n}</option>`)
+        .join('');
+
+
+['#g', '#cf', '#ct']
+    .forEach(s =>
+        $(s).innerHTML = opts
+    );
+
+
+$('#ct').selectedIndex = 1;
+
+
+function calc() {
+
+    const y = G[$('#g').value];
+
+    const d = +$('#d').value;
+
+    const s = +$('#s').value;
+
+
+    $('#e').textContent =
+        Math.round(d * s) || 0;
+
+
+    $('#c').textContent =
+        d && s
+            ? (
+                360 /
+                (d * s * y) *
+                2.54
+            ).toFixed(1)
+            : 0;
+
+}
+
+
+['#g', '#d', '#s']
+    .forEach(s =>
+        $(s).oninput = calc
+    );
+
+
+calc();
+
+
+// ==============================
+// CONVERSOR
+// ==============================
+
+function conv() {
+
+    const r =
+        (+$('#cs').value) *
+        G[$('#cf').value] /
+        G[$('#ct').value];
+
+
+    $('#cr').textContent =
+        r
+            ? +r.toFixed(3)
+            : 0;
+
+}
+
+
+['#cf', '#cs', '#ct']
+    .forEach(s =>
+        $(s).oninput = conv
+    );
+
+
+conv();
+
+
+// ==============================
+// PERFIS
+// ==============================
+
+function pl() {
+
+    $('#pl').innerHTML =
+        D.prof.length
+
+            ? D.prof.map(
+                (p, i) =>
+
+                `<div class="row">
+
+                    <div class="g">
+
+                        ${p.n.replace(/</g, '&lt;')}
+
+                        <small>
+                            ${p.g} ·
+                            ${p.d} DPI ·
+                            sens. ${p.s}
+                        </small>
+
+                    </div>
+
+                    <button
+                        class="mini"
+                        data-l="${i}"
+                    >
+                        Carregar
+                    </button>
+
+                    <button
+                        class="mini"
+                        data-x="${i}"
+                    >
+                        Excluir
+                    </button>
+
+                </div>`
+            ).join('')
+
+            : `<div class="lab" style="margin-top:12px">
+                Nenhum perfil salvo.
+              </div>`;
+
+}
+
+
+$('#psave').onclick = () => {
+
+    D.prof.push({
+
+        n:
+            $('#pn').value ||
+            'Perfil ' + (D.prof.length + 1),
+
+        g: $('#g').value,
+
+        d: $('#d').value,
+
+        s: $('#s').value
+
+    });
+
+
+    save();
+
+    $('#pn').value = '';
+
+    pl();
+
+};
+
+
+$('#pl').onclick = e => {
+
+    const b =
+        e.target.closest('button');
+
+    if (!b)
+        return;
+
+
+    if (b.dataset.x != null) {
+
+        D.prof.splice(
+            +b.dataset.x,
+            1
+        );
+
+        save();
+
+    } else {
+
+        const p =
+            D.prof[+b.dataset.l];
+
+        $('#g').value = p.g;
+
+        $('#d').value = p.d;
+
+        $('#s').value = p.s;
+
+        calc();
+
+    }
+
+
+    pl();
+
+};
+
+
+pl();
+
+
+// ==============================
+// DOWNLOAD
+// ==============================
+
+function dl(n, t) {
+
+    const a =
+        document.createElement('a');
+
+
+    a.href =
+        URL.createObjectURL(
+            new Blob(
+                [t],
+                {
+                    type: 'text/plain'
+                }
+            )
+        );
+
+
+    a.download = n;
+
+    a.click();
+
+
+    setTimeout(
+        () =>
+            URL.revokeObjectURL(a.href),
+        1000
+    );
+
+}
+
+
+const cl2 =
+    (v, a, b, d) => {
+
+        v = Math.round(+v);
+
+        return isNaN(v)
+            ? d
+            : Math.min(
+                b,
+                Math.max(a, v)
+            );
+
+    };
+
+
+// ==============================
+// OTIMIZAÇÃO DO MOUSE
+// ==============================
+
+function reg(rest) {
+
+    let m = [];
+    let w = [];
+
+
+    if (rest) {
+
+        m = [
+            '"MouseSpeed"="1"',
+            '"MouseThreshold1"="6"',
+            '"MouseThreshold2"="10"',
+            '"MouseSensitivity"="10"',
+            '"DoubleClickSpeed"="500"'
+        ];
+
+        w = [
+            '"WheelScrollLines"="3"'
+        ];
+
+    } else {
+
+        if ($('#o1').checked)
+
+            m.push(
+                '"MouseSpeed"="0"',
+                '"MouseThreshold1"="0"',
+                '"MouseThreshold2"="0"'
+            );
+
+
+        if ($('#o2').checked)
+
+            m.push(
+                '"MouseSensitivity"="' +
+                cl2(
+                    $('#v2').value,
+                    1,
+                    20,
+                    10
+                ) +
+                '"'
+            );
+
+
+        if ($('#o3').checked)
+
+            m.push(
+                '"DoubleClickSpeed"="' +
+                cl2(
+                    $('#v3').value,
+                    200,
+                    900,
+                    500
+                ) +
+                '"'
+            );
+
+
+        if ($('#o4').checked)
+
+            w.push(
+                '"WheelScrollLines"="' +
+                cl2(
+                    $('#v4').value,
+                    1,
+                    10,
+                    3
+                ) +
+                '"'
+            );
+
+    }
+
+
+    let t =
+        'Windows Registry Editor Version 5.00\r\n';
+
+
+    if (m.length)
+
+        t +=
+            '\r\n[HKEY_CURRENT_USER\\Control Panel\\Mouse]\r\n' +
+            m.join('\r\n') +
+            '\r\n';
+
+
+    if (w.length)
+
+        t +=
+            '\r\n[HKEY_CURRENT_USER\\Control Panel\\Desktop]\r\n' +
+            w.join('\r\n') +
+            '\r\n';
+
+
+    return t;
+
+}
+
+
+const oreg = () => {
+
+    $('#oreg').value =
+        reg(0);
+
+};
+
+
+document
+    .querySelectorAll('#p-opt input')
+    .forEach(
+        i =>
+            i.oninput =
+            i.onchange =
+            oreg
+    );
+
+
+oreg();
+
+
+$('#oget').onclick =
+    () =>
+        dl(
+            'redpulse_otimizar_mouse.reg',
+            reg(0)
+        );
+
+
+$('#orest').onclick =
+    () =>
+        dl(
+            'redpulse_restaurar_mouse.reg',
+            reg(1)
+        );
+
+
+// ==============================
+// MACROS
+// ==============================
+
+let M =
+    D.macro ||
+    [
+        {
+            t: 'click',
+            v: 'Left'
+        },
+
+        {
+            t: 'wait',
+            v: 50
+        }
+    ];
+
+
+let rec = 0;
+let lastE = 0;
+
+
+const lbl = s =>
+
+    s.t == 'click'
+
+        ? 'Clique ' +
+          ({
+              Left: 'esquerdo',
+              Right: 'direito',
+              Middle: 'do meio'
+          }[s.v])
+
+        : s.t == 'key'
+
+            ? 'Tecla ' + s.v
+
+            : 'Esperar ' +
+              s.v +
+              ' ms';
+
+
+function mr() {
+
+    D.macro = M;
+
+    save();
+
+
+    $('#ms').innerHTML =
+
+        M.length
+
+            ? M.map(
+                (s, i) =>
+
+                `<div
+                    class="row"
+                    id="st${i}"
+                >
+
+                    <span class="g">
+                        ${i + 1}.
+                        ${lbl(s).replace(
+                            /</g,
+                            '&lt;'
+                        )}
+                    </span>
+
+                    <button
+                        class="mini"
+                        data-d="${i}"
+                    >
+                        Remover
+                    </button>
+
+                </div>`
+            ).join('')
+
+            : `<div class="lab">
+                Nenhum passo.
+                Adicione passos ou grave.
+              </div>`;
+
+
+    gen();
+
+}
+
+
+function gen() {
+
+    const k =
+        $('#mk').value;
+
+    const n =
+        cl2(
+            $('#mr').value,
+            1,
+            100000,
+            10
+        );
+
+    const nm =
+        (
+            $('#mn').value ||
+            'Macro'
+        ).replace(
+            /[\r\n]/g,
+            ' '
+        );
+
+
+    const b =
+        M.map(
+            s =>
+                '    ' +
+
+                (
+                    s.t == 'click'
+                        ? `Click "${s.v}"`
+
+                        : s.t == 'key'
+                            ? `Send "{${String(s.v)
+                                .replace(
+                                    /[{}"\r\n]/g,
+                                    ''
+                                ) || 'a'}}"`
+
+                            : `Sleep ${
+                                cl2(
+                                    s.v,
+                                    1,
+                                    600000,
+                                    50
+                                )
+                            }`
+                )
+        ).join('\n') ||
+        '    Sleep 100';
+
+
+    let script =
+`#Requires AutoHotkey v2.0
+; ${nm}
+
+^Esc::ExitApp
+
+${$('#mm').value == 't'
+    ? `run := false
+
+${k}:: {
+    global run
+
+    run := !run
+
+    while run {
+
+${b}
+
+    }
+}`
+    : `${k}:: {
+
+    Loop ${n} {
+
+${b}
+
+    }
+}`
+}`;
+
+
+    $('#mc').value = script;
+
+}
+
+
+document
+    .querySelectorAll(
+        '#p-mac .f input,#p-mac .f select'
+    )
+    .forEach(
+        i =>
+            i.oninput =
+            i.onchange =
+            gen
+    );
+
+
+$('#p-mac').onclick = e => {
+
+    const b =
+        e.target.closest('button');
+
+    if (!b)
+        return;
+
+
+    if (b.dataset.a) {
+
+        const a =
+            b.dataset.a;
+
+
+        M.push(
+
+            a == 'key'
+
+                ? {
+                    t: 'key',
+                    v:
+                        $('#mkey').value ||
+                        'a'
+                }
+
+                : a == 'wait'
+
+                    ? {
+                        t: 'wait',
+                        v:
+                            cl2(
+                                $('#mw').value,
+                                1,
+                                600000,
+                                50
+                            )
+                    }
+
+                    : {
+                        t: 'click',
+                        v: a
+                    }
+
+        );
+
+
+        mr();
+
+
+    } else if (
+        b.dataset.d != null
+    ) {
+
+        M.splice(
+            +b.dataset.d,
+            1
+        );
+
+        mr();
+
+    }
+
+};
+
+
+$('#mclr').onclick = () => {
+
+    M = [];
+
+    mr();
+
+};
+
+
+$('#mp1').onclick = () => {
+
+    M = [
+        {
+            t: 'click',
+            v: 'Left'
+        },
+
+        {
+            t: 'wait',
+            v: 60
+        }
+    ];
+
+    $('#mm').value = 't';
+
+    mr();
+
+};
+
+
+$('#mp2').onclick = () => {
+
+    M = [
+        {
+            t: 'key',
+            v: 'e'
+        },
+
+        {
+            t: 'wait',
+            v: 100
+        }
+    ];
+
+    $('#mm').value = 't';
+
+    mr();
+
+};
+
+
+$('#mdl').onclick = () => {
+
+    dl(
+
+        (
+            $('#mn').value ||
+            'macro'
+        ).replace(
+            /[^\w-]+/g,
+            '_'
+        ) + '.ahk',
+
+        $('#mc').value
+
+    );
+
+};
+
+
+$('#mcp').onclick = async () => {
+
+    try {
+
+        await navigator.clipboard.writeText(
+            $('#mc').value
+        );
+
+        $('#mcp').textContent =
+            'Copiado';
+
+    } catch (e) {
+
+        $('#mc').select();
+
+        $('#mcp').textContent =
+            'Selecionado';
+
+    }
+
+
+    setTimeout(
+        () =>
+            $('#mcp').textContent = 'Copiar',
+        1500
+    );
+
+};
+
+
+$('#mtest').onclick = async () => {
+
+    for (
+        let i = 0;
+        i < M.length;
+        i++
+    ) {
+
+        const r =
+            $('#st' + i);
+
+
+        if (r)
+            r.classList.add('run');
+
+
+        await new Promise(
+            z =>
+                setTimeout(
+                    z,
+                    M[i].t == 'wait'
+                        ? Math.min(
+                            M[i].v,
+                            800
+                        )
+                        : 220
+                )
+        );
+
+
+        if (r)
+            r.classList.remove('run');
+
+    }
+
+};
+
+
+const rp = $('#rp');
+
+
+$('#mrec').onclick = () => {
+
+    rec = !rec;
+
+    lastE = 0;
+
+
+    $('#mrec').textContent =
+        rec
+            ? 'Parar gravação'
+            : 'Gravar';
+
+
+    rp.classList.toggle(
+        'hot',
+        rec
+    );
+
+
+    rp.textContent =
+        rec
+            ? 'Gravando... clique ou digite aqui'
+            : 'Clique em Gravar e use o mouse e o teclado aqui';
+
+
+    if (rec)
+        rp.focus();
+
+};
+
+
+function ev(s) {
+
+    if (!rec)
+        return;
+
+
+    const n =
+        performance.now();
+
+
+    if (
+        lastE &&
+        n - lastE >= 10
+    ) {
+
+        M.push({
+            t: 'wait',
+            v: Math.round(
+                n - lastE
+            )
+        });
+
+    }
+
+
+    M.push(s);
+
+    lastE = n;
+
+    mr();
+
+}
+
+
+rp.oncontextmenu =
+    e =>
+        e.preventDefault();
+
+
+rp.onmousedown = e => {
+
+    if (rec) {
+
+        e.preventDefault();
+
+        ev({
+            t: 'click',
+            v:
+                [
+                    'Left',
+                    'Middle',
+                    'Right'
+                ][e.button] ||
+                'Left'
+        });
+
+    }
+
+};
+
+
+rp.onkeydown = e => {
+
+    if (rec) {
+
+        e.preventDefault();
+
+
+        const k =
+            e.key == ' '
+                ? 'Space'
+                : e.key.length == 1
+                    ? e.key.toLowerCase()
+                    : e.key;
+
+
+        ev({
+            t: 'key',
+            v: k
+        });
+
+    }
+
+};
+
+
+mr();
+
+
+// ==============================
+// GUIA DO WINDOWS
+// ==============================
+
+const W = [
+
+    [
+        'Abrir Configurações > Bluetooth e dispositivos > Mouse',
+        'Tudo começa nessa tela.'
+    ],
+
+    [
+        'Velocidade do cursor no meio (10 de 20)',
+        'Valor neutro, sem multiplicar o movimento.'
+    ],
+
+    [
+        'Desmarcar "Aprimorar precisão do ponteiro"',
+        'Em Configurações adicionais do mouse > Opções do ponteiro.'
+    ],
+
+    [
+        'Confirmar o DPI na aba Medir DPI',
+        'Compare com o DPI configurado no mouse.'
+    ],
+
+    [
+        'Escolher DPI entre 400 e 1600',
+        'Faixa mais usada em jogos competitivos.'
+    ],
+
+    [
+        'Usar a mesma sensibilidade em todos os jogos',
+        'Use o Conversor entre jogos.'
+    ]
+
+];
+
+
+function wl() {
+
+    $('#wl').innerHTML =
+
+        W.map(
+            ([t, d], i) =>
+
+            `<label class="row">
+
+                <input
+                    type="checkbox"
+                    data-i="${i}"
+                    ${
+                        D.chk.includes(i)
+                            ? 'checked'
+                            : ''
+                    }
+                >
+
+                <span class="g">
+
+                    ${t}
+
+                    <small>
+                        ${d}
+                    </small>
+
+                </span>
+
+            </label>`
+        ).join('');
+
+
+    const n =
+        D.chk.length;
+
+
+    $('#wp').textContent =
+        n + '/' + W.length;
+
+
+    $('#wb').style.width =
+        n / W.length * 100 + '%';
+
+}
+
+
+$('#wl').onchange = e => {
+
+    const i =
+        +e.target.dataset.i;
+
+
+    D.chk =
+        e.target.checked
+
+            ? [
+                ...new Set(
+                    [
+                        ...D.chk,
+                        i
+                    ]
+                )
+            ]
+
+            : D.chk.filter(
+                x => x != i
+            );
+
+
+    save();
+
+    wl();
+
+};
+
+
+wl();
+</script>
+</body>
+</html>
